@@ -23,12 +23,12 @@ jobs:
        - name: cloning repo
          continue-on-error: true
          run: |
-           git clone -b main https://pharlan64:${{ secrets.GH_TOKEN }}@github.com/pharlan64/EncodeV.git
+           git clone -b main https://pharlan64:${{ secrets.GH_TOKEN }}@github.com/Krispy06/Encoder-With-DB.git
        - name: Running Bot 
          timeout-minutes: 240
          continue-on-error: true
          run: |
-           cd EncodeV
+           cd Encoder-With-DB
            docker build -t compressor . && docker run compressor
 
        - name: Loop workflow
