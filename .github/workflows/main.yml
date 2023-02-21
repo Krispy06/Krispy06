@@ -40,3 +40,16 @@ jobs:
            git add looper.txt
            git commit -m "Workflow : Loop at $(date -u +%D-%T%P)"
            git push -q https://${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:main
+
+jobs:
+  delete-previous-runs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Delete previous runs
+        uses: peter-evans/delete-previous-builds@v1.5.0
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
+          exclude-current: false
